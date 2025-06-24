@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course: Caring for Your New Cat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    .color-box-bkg { background-color: #f2f2f2 !important; }
+    .helper-text { font-size:12px; color:#6B7280 }
+    img.progress-checkbox { width: 16px; float: left; }
+    img.progress-checkbox-subitem { width: 12px; float: left; }
+
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+
+    h2.text-xl { font-size: 1.75em !important; }
+    .sidebar-w { width: 400px; }
+    a {
+      text-decoration: underline !important;
+      color: #2A4ECC !important;
+    }
+
+      .mobile-only{
+      display: none !important;
+    }
+
+    .text-sm{
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+    }
+
+    .source-text{
+      font-size: 0.875rem !important;
+    }
+    /*hide sidebar on mobile*/
+    @media (max-width: 500px) {
+    aside.sidebar-w, .desktop-only{
+      display: none !important;
+    }
+
+    .mobile-only{
+      display: block !important;
+    }
+
+    .text-lg {
+      font-size: 16px !important;
+    }
+
+     .text-sm{
+      font-size: 0.875rem !important;
+       line-height: 1.25rem !important;
+    }
+
+  #contentWrapper {
+    transform: none !important;
+  }
+
+  .sidebar-w{
+    width: 100%;
+  }
+   .source-text{
+      font-size: 0.75rem !important;
+    }
+  }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <!-- Top Nav -->
+<div class="mobile-only bg-indigo-700 text-white px-4 py-3 flex items-center">
+  <div class="flex items-center space-x-4">
+    <img src="img/hamburger.svg" class="w-8 h-8">
+    <h1 class="font-semibold text-white text-lg">Lorraine Baines Course</h1>
+  </div>
+</div>
+
+  <div class="flex flex-1 overflow-hidden relative">
+    <!-- Left Copy Panel (Initially Hidden) -->
+    <div id="leftCopyPanel" class="sidebar-w bg-indigo-50 p-2 absolute top-0 bottom-0 right-0 z-10 transform translate-x-full transition-transform duration-500 ease-in-out h-screen" >
+
+      <!-- Start here -->
+
+      
+  
+       <!-- Chatbot-->
+       <div class="w-full max-w-md bg-white rounded-xl flex flex-col h-[92%]"style="border: 1px solid rgba(40, 45, 55, 0.1);">
+
+
+        <!-- Header -->
+<header class="flex items-center justify-between px-4 py-3 border-b">
+  <div class="flex items-center gap-3">
+    <img src="img/ta-icon-placeholder.png" alt="Bot Avatar" class="w-8 h-8 rounded-full">
+    <div class="flex gap-2 items-center">
+      <h1 class="text-base font-semibold">Teaching Assistant</h1>
+      <img src="img/alpha-badge.svg">
+    </div>
+  </div>
+  <button id="closePanelButton" class="text-gray-500 hover:text-gray-800 text-lg font-bold leading-none">&times;</button>
+</header>
+
+    
+        <!-- Messages -->
+        <main id="chat" class="flex-1 overflow-y-auto p-4 space-y-4">
+          <!-- Messages inserted here -->
+           
+          <!--initial placeholder-->
+          <div id="messages" class="relative p-0">
+            <!--Messages-->
+            <div id="placeholder" class="text-black text-left text-sm">
+
+              <div class="flex items-start gap-2"><img src="img/ta-icon-placeholder.png" alt="Bot Avatar" class="w-[40px] h-[40px] rounded-md"><div class="flex flex-col"><div class="flex items-center gap-2"><div class="text-sm font-semibold text-[#12151A]">Teaching Assistant</div><div class="text-xs text-gray-400 mt-[1px]">10:21 AM</div></div><div class="text-[#12151A] px-0 py-1 rounded-xl max-w-full text-sm">  <p class="mb-3">
+              👋 Hey there! I am an AI teacher Assistant and currently I can answer anything related to Video, PDF or Text Lessons. You can ask me anything! Here are some examples of questions you may have:
+              </p>
+              <p class="mb-3 font-style: italic text-gray-500"> What are the most important topics I should keep in mind for this course?</p>
+
+              <p class="mb-3 font-style: italic text-gray-500""> Summarize this lesson using bullet points.</p>
+
+              <p class="font-style: italic text-gray-500"">What skills will I gain by the end of the course?</p></div>
+              
+               <div class="flex justify-end mt-1"><img src="img/thumbs-up-down.png" alt="Answer Rating" class="w-10 cursor-pointer mt-1"></div>
+              </div>
+            </div>
+            
+            
+          </div>
+  
+
+        </main>
+    
+        <!-- Input -->
+        <form id="chat-form" class="border-t px-3 pt-4 pb-0 flex flex-col gap-2">
+         
+          <div class="relative w-full">
+            <input id="chat-input" type="text" placeholder="How can I help you today?"
+              class="w-full text-sm pl-3 pr-10 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <button type="submit"
+              class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-[#2A4ECC] hover:bg-[#1336B2] text-white rounded-md flex items-center justify-center">
+              <p class="text-sm pt-1 pb-1 pl-3 pr-3 font-semibold">Send</p>
+            </button>
+          </div>
+        </form>
+
+        <div class="text-xs p-4 text-gray-500">
+          <img src="img/info.svg" class="float-left w-5 mr-2">
+          The Teaching Assistant can make mistakes. Please double-check 
+the responses.
+        </div>
+        
+      </div>
+
+
+
+
+
+      <!--end here-->
+      
+      
+    </div>
+
+    <!-- Content Wrapper -->
+    <div id="contentWrapper" class="flex flex-1 transform transition-transform duration-500 ease-in-out">
+
+      <!-- Sidebar -->
+      <aside class="sidebar-w bg-white border-r overflow-y-auto">
+        
+      <div class="p-6 border-b shadow-lg m-[16px] rounded-md relative overflow-hidden">
+      <div class="-m-6 bg-[#4E50E4] px-6 py-3 text-white rounded-t-md mb-2">
+        
+        <h3 class="text-center">Lorraine Baines Course</h3>
+        </div>
+      <button class="text-xs flex items-center gap-1 mt-6 text-gray-500"><img src="img/caret-left.svg">Go to Dashboard</button>
+      <h2 class="text-xl font-semibold leading-tight mt-4 mb-4">
+        A Comprehensive Guide to Caring for Your New Cat
+      </h2>
+      <div class="bg-gray-400 w-full h-1 rounded-full"></div>
+      <p class="text-sm text-gray-500 mt-1">0% complete</p>
+      
+      </div>
+
+        <div class="px-4 pb-4">
+
+  
+
+            <!--Search-->
+
+            <div class="w-full max-w-md mb-4 mt-4">
+              <div class="relative">
+                  <input 
+                      type="text" 
+                      class="w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10" 
+                      placeholder="Search by lesson title"
+                  >
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </div>
+              </div>
+          </div>
+  
+
+
+          <!-- Course Outline -->
+          <div>
+            <details open class="mb-2 group">
+              <summary class="font-semibold text-sm cursor-pointer py-2 flex justify-between items-center list-none">
+                <span class="flex items-center gap-2">
+                  <img class="progress-checkbox" src="img/checkbox-blank-circle-svgrepo-com.png">
+                  Course Introduction <span class="text-gray-400">0/1</span>
+                </span>
+                <span class="text-gray-400 transition-transform duration-200 group-open:rotate-180">▼</span>
+              </summary>
+              <ul class="pl-4 space-y-1 text-sm text-gray-700">
+                <li class="flex items-center space-x-2">
+                  <img class="progress-checkbox-subitem mr-2" src="img/checkbox-blank-circle-svgrepo-com.png">
+                  <span>Intro Video</span>
+                </li>
+              </ul>
+            </details>
+
+            <details open class="mb-2 group">
+              <summary class="font-semibold text-sm cursor-pointer py-2 flex justify-between items-center list-none">
+                <span class="flex items-center gap-2">
+                  <img class="progress-checkbox" src="img/checkbox-blank-circle-svgrepo-com.png">
+                  Introduction to Cat Care<span class="text-gray-400">0/5</span>
+                </span>
+                <span class="text-gray-400 transition-transform duration-200 group-open:rotate-180">▼</span>
+              </summary>
+              <ul class="pl-4 space-y-2 text-sm text-gray-700">
+                <li class="flex items-center space-x-2"><span><img class="progress-checkbox-subitem mr-2" src="img/checkbox-blank-circle-svgrepo-com.png">Why Cats Make Great Companions</span></li>
+                <li class="flex items-center space-x-2"><span><img class="progress-checkbox-subitem mr-2" src="img/checkbox-blank-circle-svgrepo-com.png">Understanding Feline Behavior</span></li>
+                <li class="flex items-center space-x-2"><span><img class="progress-checkbox-subitem mr-2" src="img/checkbox-blank-circle-svgrepo-com.png">Choosing the Right Cat for You</span></li>
+                <li class="flex items-center space-x-2"><span><img class="progress-checkbox-subitem mr-2" src="img/checkbox-blank-circle-svgrepo-com.png">Understanding Cat Breeds and Their Needs</span></li>
+              </ul>
+            </details>
+
+            <details class="mb-2 group">
+              <summary class="font-semibold text-sm cursor-pointer py-2 flex justify-between items-center list-none">
+                <span class="flex items-center gap-2">
+                  <img class="progress-checkbox" src="img/checkbox-blank-circle-svgrepo-com.png">
+                  Preparing Your Home <span class="text-gray-400">0/6</span>
+                </span>
+                <span class="text-gray-400 transition-transform duration-200 group-open:rotate-180">▼</span>
+              </summary>
+            </details>
+
+            <details class="mb-2 group">
+              <summary class="font-semibold text-sm cursor-pointer py-2 flex justify-between items-center list-none">
+                <span class="flex items-center gap-2">
+                  <img class="progress-checkbox" src="img/checkbox-blank-circle-svgrepo-com.png">
+                  Feeding & Nutrition <span class="text-gray-400">0/3</span>
+                </span>
+                <span class="text-gray-400 transition-transform duration-200 group-open:rotate-180">▼</span>
+              </summary>
+            </details>
+          </div>
+        </div>
+        <div class="text-center text-xs text-gray-400 py-4 border-t">TEACH ONLINE WITH THINKIFIC</div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <div class="flex items-center mb-4 content-center">
+          <h2 class="text-lg font-semibold">Why Planning is Important</h2>
+          <div class="ml-auto space-x-2">
+            <button  class="desktop-only text-[12px] text-[#282d37] bg-[#F6F8FB] rounded-[8px] px-3 py-[6px] hover:bg-[#EEF0F5] font-semibold" style="border: 1px solid rgba(40, 45, 55, 0.5); font-family: Inter;"><img class="float-left mr-1" style="padding-top: 2px;" src="img/discussion.svg"> 1 Discussion</button>
+            <button class="discussionToggle desktop-only text-[12px] text-[#282d37] bg-[#F6F8FB] rounded-[8px] px-3 py-[5px] hover:bg-[#EEF0F5] font-semibold" style="border: 1px solid rgba(40, 45, 55, 0.5);"><div style="padding-top: 2px; font-family: Inter;"> <lottie-player class="float-left mr-1" src="https://taisdslessa.github.io/ta-v2/sparkles/sparklespin.json" background="transparent"  speed="1"  style="width: 16px; height: 16px;" autoplay></lottie-player> Teaching Assistant </div> </button>
+
+            <img class="desktop-only " style="padding-top: 4px; float: right;" src="img/ArrowsOutSimple.svg">
+
+            <!--mobile-only buttons-->
+<div class="mobile-only flex space-x-2 items-start">
+  <button class="text-sm text-[#282d37] bg-[#F6F8FB] rounded-[8px] px-3 py-1 hover:bg-[#EEF0F5]" style="border: 1px solid rgba(40, 45, 55, 0.5);">
+    <img class="mr-1" style="padding-top: 2px;" src="img/discussion.svg" alt="discussion icon">
+  </button>
+  <button class="discussionToggle text-sm text-[#282d37] bg-[#F6F8FB] rounded-[8px] px-3 py-1 hover:bg-[#EEF0F5]" style="border: 1px solid rgba(40, 45, 55, 0.5);">
+    <div style="padding-top: 2px;"><lottie-player class="float-left mr-1" src="sparkles/sparklespin.json" background="transparent"  speed="1"  style="width: 16px; height: 16px;" autoplay></lottie-player></div>
+  </button>
+</div>
+
+
+         
+            
+          </div>
+          <div></div>
+        </div>
+        <!-- Video Placeholder -->
+        <div class="aspect-video bg-gray-200 relative overflow-hidden rounded-lg">
+          <img src="img/cat-video-thumbnail.jpg" alt="Video Thumbnail" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white bg-gray-700 bg-opacity-50 rounded-full p-3 cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-2 left-2 text-white text-xs bg-black bg-opacity-60 px-2 py-0.5 rounded">2:40</div>
+          <div class="absolute bottom-2 right-2 flex items-center space-x-2 text-white text-xs bg-black bg-opacity-60 px-2 py-0.5 rounded">
+            <span>⚙️</span>
+            <span>🔊</span>
+            <span>⛶</span>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Mobile Discussion Overlay Panel -->
+<div id="discussion" class="fixed inset-0 bg-white z-50 hidden flex flex-col shadow-lg">
+  <header class="flex items-center justify-between px-4 py-3 border-b">
+    <h2 class="text-lg font-semibold">Discussion Panel</h2>
+    <button id="discussionClose" class="text-gray-700 text-xl font-bold">&times;</button>
+  </header>
+  <div class="flex-1 p-4 overflow-auto">
+    <!-- Your discussion content here -->
+    <p>Discussion content goes here.</p>
+  </div>
+</div>
+
+  <script>
+    const discussionToggles = document.querySelectorAll('.discussionToggle');
+    const contentWrapper = document.getElementById('contentWrapper');
+    const leftPanel = document.getElementById('leftCopyPanel');
+    const searchResults = document.getElementById('searchResults');
+    const searchInput = document.getElementById('searchInput');
+    const citationContent = document.getElementById('citationContent');
+    const chat = document.getElementById('chat');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    const botReplies = {
+      'how often should i feed my kitten': 'Feed your kitten 3–4 times a day until they are 6 months old. <br> <div class="mt-2 source-text"><span class="font-semibold text-gray-500">Source:</span> <a href="https://www.example.com/feeding" target="_blank">Taking care of my kitten</a></div>',
+
+      'what is the best litter for kittens': 'Non-clumping litter is safest for kittens under 3 months old. <br> <div class="mt-2"><span class="font-semibold source-text text-gray-500">Source</span> <a href="https://www.example.com/feeding" target="_blank">Cat care</a></div>',
+
+      'how to train a kitten to use litter box': 'Place the kitten in the litter box after meals and naps; praise success!<br> <div class="mt-2"><span class="font-semibold source-text text-gray-500">Source</span> <a href="https://www.example.com/feeding" target="_blank">Tranining your cat</a></div>'
+    };
+
+
+    /* panel open and close */
+    let panelOpen = false;
+
+discussionToggles.forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    panelOpen = !panelOpen;
+
+    if (panelOpen) {
+      contentWrapper.classList.add('-translate-x-[400px]');
+      leftPanel.classList.remove('translate-x-full');
+    } else {
+      contentWrapper.classList.remove('-translate-x-[400px]');
+      leftPanel.classList.add('translate-x-full');
+    }
+  });
+});
+
+    /* end of panel open and close */
+
+    document.getElementById('closePanelButton').addEventListener('click', () => {
+  contentWrapper.classList.remove('-translate-x-[400px]');
+  leftPanel.classList.add('translate-x-full');
+  panelOpen = false;
+});
+
+    /* Time format change*/
+    function formatTime() {
+    const now = new Date();
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+    return now.toLocaleString(undefined, options);
+  }
+
+    function addMessage(from, text) {
+
+      const placeholder = document.getElementById('messages');
+      if (placeholder) {
+      placeholder.style.display = 'none';
+      }
+
+  const container = document.createElement('div');
+  container.className = 'fade-in items-start flex flex-col';
+
+  if (from === 'user') {
+    // Create a row for the user message
+    const messageRow = document.createElement('div');
+    messageRow.className = 'flex items-start gap-2 justify-start';
+
+    // User avatar image
+    const avatar = document.createElement('img');
+    avatar.src = 'img/user-picture-placeholder.png'; // Change this to your user's avatar image path
+    avatar.alt = 'User Avatar';
+    avatar.className = 'w-[40px] h-[40px] rounded-md'; // 40px x 40px avatar size
+
+    const content = document.createElement('div');
+    content.className = 'flex flex-col';
+
+    // Header row for user name and timestamp
+    const header = document.createElement('div');
+    header.className = 'flex items-center gap-2';
+
+    const name = document.createElement('div');
+    name.className = 'text-sm font-semibold text-[#12151A]';
+    name.textContent = 'Lorraine Baines'; // Static user name
+
+    const time = document.createElement('div');
+    time.className = 'text-xs text-gray-400 mt-1';
+    time.textContent = formatTime();
+
+    header.appendChild(name);
+    header.appendChild(time);
+
+    // User message bubble
+    const bubble = document.createElement('div');
+    bubble.className = 'text-[#12151A] px-0 py-1 rounded-t-xl rounded-bl-xl max-w-full text-sm';
+    bubble.textContent = text;
+
+    // Assemble user message: name/time above message bubble
+    content.appendChild(header);
+    content.appendChild(bubble);
+
+    messageRow.appendChild(avatar);
+    messageRow.appendChild(content);
+    container.appendChild(messageRow);
+  }
+
+  else {
+    // Create a row for the assistant/bot message
+    const messageRow = document.createElement('div');
+    messageRow.className = 'flex items-start gap-2';
+
+    // Bot avatar image
+    const avatar = document.createElement('img');
+    avatar.src = 'img/ta-icon-placeholder.png';
+    avatar.alt = 'Bot Avatar';
+    avatar.className = 'w-[40px] h-[40px] rounded-md'; // 40px x 40px avatar size
+
+    const content = document.createElement('div');
+    content.className = 'flex flex-col';
+
+    // Header row for bot name and timestamp
+    const header = document.createElement('div');
+    header.className = 'flex items-center gap-2';
+
+    const name = document.createElement('div');
+    name.className = 'text-sm font-semibold text-[#12151A]';
+    name.textContent = 'Teaching Assistant'; // Change to actual name if dynamic
+
+    const time = document.createElement('div');
+    time.className = 'text-xs text-gray-400 mt-[1px]';
+    time.textContent = formatTime();
+
+    header.appendChild(name);
+    header.appendChild(time);
+
+    // Bot message bubble
+    const bubble = document.createElement('div');
+    bubble.className = 'text-[#12151A] px-0 py-1 rounded-xl max-w-full text-sm';
+    bubble.innerHTML = text;
+
+    // Feedback thumbs icon (aligned right)
+    const thumbsWrapper = document.createElement('div');
+    thumbsWrapper.className = 'flex justify-end w-full';
+    
+    // Feedback thumbs icon
+    const thumbs = document.createElement('img');
+    thumbs.src = 'img/thumbs-up-down.png';
+    thumbs.alt = 'Answer Rating';
+    thumbs.className = 'w-10 cursor-pointer mt-1';
+
+    thumbsWrapper.appendChild(thumbs);
+
+    // Assemble bot message: name/time > bubble > thumbs
+    content.appendChild(header);
+    content.appendChild(bubble);
+    content.appendChild(thumbsWrapper);
+
+    messageRow.appendChild(avatar);
+    messageRow.appendChild(content);
+    container.appendChild(messageRow);
+  }
+
+  // Append the new message and scroll to bottom
+  chat.appendChild(container);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+
+
+    function botTypingIndicator() {
+      const typing = document.createElement('div');
+      typing.id = 'typing';
+      typing.className = 'flex items-center space-x-2 text-sm text-gray-400 italic fade-in';
+
+      const avatar = document.createElement('img');
+      avatar.src = 'img/ta-icon-placeholder.png';
+      avatar.alt = 'Bot Avatar';
+      avatar.className = 'w-6 h-6 rounded-md';
+
+      const dots = document.createElement('span');
+      dots.className = 'typing-dots';
+      dots.textContent = 'Teaching Assistant is typing';
+
+      typing.appendChild(avatar);
+      typing.appendChild(dots);
+      chat.appendChild(typing);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      const typing = document.getElementById('typing');
+      if (typing) typing.remove();
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage('user', text);
+      input.value = '';
+
+      botTypingIndicator();
+
+      setTimeout(() => {
+        removeTypingIndicator();
+        function normalize(text) {
+  return text.toLowerCase().trim().replace(/[^\w\s]/g, '');
+}
+
+    const normalizedInput = normalize(text);
+
+      // Create a lookup map with normalized keys:
+      const normalizedBotReplies = Object.fromEntries(
+        Object.entries(botReplies).map(([key, value]) => [normalize(key), value])
+      );
+
+      const reply = normalizedBotReplies[normalizedInput] ||
+  "Unfortunately I couldn't find any answer for this topic. Please use the search feature to search for specific courses.";
+
+        addMessage('bot', reply);
+      }, 1500);
+    });
+
+    const messagesContainer = document.getElementById('messages');
+  const placeholder = document.getElementById('placeholder');
+  const userInput = document.getElementById('chat-input');
+
+userInput.addEventListener('input', () => {
+  if (userInput.value.trim() === '' && messagesContainer.children.length <= 1) {
+    placeholder.style.display = 'block';
+  } else {
+    placeholder.style.display = 'none';
+  }
+});
+
+    
+
+  
+  </script>
+</body>
+</html>
